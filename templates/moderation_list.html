@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Статьи на модерации</h2>
+
+{% for article in articles %}
+    <h3>{{ article.title }}</h3>
+
+    <p>
+        Автор: {{ article.author.username }}
+    </p>
+
+    <a href="{% url 'moderate_article' article.pk %}">
+        Проверить
+    </a>
+
+    <hr>
+{% empty %}
+    <p>Нет статей на модерации.</p>
+{% endfor %}
+
+{% endblock %}

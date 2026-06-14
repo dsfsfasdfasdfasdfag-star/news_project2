@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Мои статьи</h2>
+
+<a href="{% url 'create_article' %}">
+    Создать статью
+</a>
+
+<hr>
+
+{% for article in articles %}
+    <h3>{{ article.title }}</h3>
+
+    <p>Статус: {{ article.get_status_display }}</p>
+
+    {% if article.rejection_reason %}
+        <p>Причина отказа: {{ article.rejection_reason }}</p>
+    {% endif %}
+
+    {% if article.status == 'rejected' %}
+        <a href="{% url 'edit_article' article.pk %}">
+            Редактировать
+        </a>
+    {% endif %}
+
+    <hr>
+{% empty %}
+    <p>Статей нет.</p>
+{% endfor %}
+
+{% endblock %}

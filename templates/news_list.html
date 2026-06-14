@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Новости</h1>
+
+{% for article in articles %}
+
+<div class="card">
+    <h2>{{ article.title }}</h2>
+
+    <p>{{ article.content }}</p>
+
+    <p>
+        Автор: {{ article.author.username }}
+    </p>
+
+    <p>
+        {{ article.published_at }}
+    </p>
+</div>
+
+{% empty %}
+
+<p>Новостей пока нет.</p>
+
+{% endfor %}
+
+{% endblock %}

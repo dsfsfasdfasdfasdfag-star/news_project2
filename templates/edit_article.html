@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Редактирование статьи</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    <input type="text" name="title" value="{{ article.title }}" required>
+    <br><br>
+
+    <textarea name="content" rows="10" cols="60" required>{{ article.content }}</textarea>
+    <br><br>
+
+    <button type="submit">
+        Отправить на повторную модерацию
+    </button>
+</form>
+
+{% endblock %}
